@@ -21,15 +21,16 @@ export class EmployeesService {
       });
     }
 
-    return this.prisma.employee.findMany({});
+    return this.prisma.employee.findMany();
   }
 
   async findOne(id: string) {
-    return this.prisma.employee.findUnique({
+    const employee = this.prisma.employee.findUnique({
       where: {
         id,
       },
     });
+    return employee;
   }
 
   async update(id: string, updateEmployee: Prisma.EmployeeUpdateInput) {
